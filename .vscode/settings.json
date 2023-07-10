@@ -1,3 +1,4 @@
 {
-    "python.pythonPath":"/home/sk/django/venv/bin"
+    "python.pythonPath": "/home/sk/django/venv/bin",
+    "files.autoSave": "onFocusChange",
 }
