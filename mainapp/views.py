@@ -1,3 +1,5 @@
+from datetime import datetime
+from typing import Any, Dict
 from django.views.generic import TemplateView
 
 
@@ -8,6 +10,15 @@ class MainPageView(TemplateView):
 class NewsPageView(TemplateView):
     template_name = "mainapp/news.html"
 
+    def get_context_data(self, **kwargs):
+       context = super().get_context_data(**kwargs)
+
+       context['news_title'] = 'Первый заголовок'
+       context['news_preview'] = 'Предварительное описание первой новости'
+       context['range'] = range(5)
+       context['datetime_obj'] = datetime.now()
+
+       return context
 
 class CoursesPageView(TemplateView):
     template_name = "mainapp/courses_list.html"
