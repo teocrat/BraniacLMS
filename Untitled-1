@@ -1,0 +1,5 @@
+-- database: /home/sk/django/BraniacLMS/BraniacLMS/db.sqlite3
+
+-- Чтобы выполнить весь файл, нажмите кнопку ▷ в правом верхнем углу окна.
+
+SELECT * FROM "auth_user";
