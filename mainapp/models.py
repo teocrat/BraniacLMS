@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.query import QuerySet
 
 # Create your models here.
 
@@ -34,16 +35,28 @@ class News(BaseModel):
         verbose_name = 'новость'
         verbose_name_plural = 'новости'
 
+
+class CoursesManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(deleted=False)
+
+
 class Courses(BaseModel):
+    objects = CoursesManager()
     name = models.CharField(max_length=256, verbose_name="Name")
     description = models.TextField(verbose_name="Description", blank=True, null=True)
     description_as_markdown = models.BooleanField(verbose_name="As markdown", default=False)
     cost = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Cost", default=0)
     cover = models.CharField(max_length=25, default="no_image.svg", verbose_name="Cover")
 
+    
+    
+
     def __str__(self) -> str:
         return f"{self.pk} {self.name}"
+    
 
+    
 
     class Meta:
         verbose_name = 'курс'
